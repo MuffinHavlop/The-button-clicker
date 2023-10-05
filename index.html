@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="main.css">
+  <title>Button Race</title>
+</head>
+<body>
+<div class = "container">
+  <input type="text" name="name" placeholder="Enter your name">
+
+  <button id="button">Click me!</button>
+</div>
+  <p id="winner"></p>
+
+  <script>
+  // Track who clicks the button first
+  const button = document.querySelector('#button');
+  let firstClicker = null;
+
+  // Get the contestant's name from the input field
+  const nameInput = document.querySelector('input[name="name"]');
+  nameInput.addEventListener('change', () => {
+    // Get the contestant's name
+    const name = nameInput.value;
+
+    // Set the first clicker variable to the contestant's name
+    firstClicker = name;
+  });
+
+  button.addEventListener('click', () => {
+    // Check if anyone has clicked the button first
+    if (firstClicker === null) {
+      return;
+    }
+
+    // Update the winner element to display the name of the first clicker
+    document.querySelector('#winner').textContent = `The first clicker is ${firstClicker}!`;
+  });
+  </script>
+</body>
+</html>
